@@ -8,8 +8,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class HelloComponent implements OnInit {
   pageTitle = 'Page';
+  loading = false;
+
   ngOnInit(): void {
-    // alert('ngOninit');
     typeof window !== 'undefined'
       ? window?.localStorage.getItem('firstName')
         ? (document.title =
@@ -22,7 +23,6 @@ export class HelloComponent implements OnInit {
       ? window?.localStorage.getItem('firstName') ?? ''
       : ''
   );
-  loading = false;
   onChange(event: KeyboardEvent) {
     const value = (event.target as HTMLInputElement).value;
     this.firstName.set(value);
