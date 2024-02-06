@@ -3,7 +3,7 @@ E-commerce Platform with Angular
 
 ## Demo
 
-<img src="src/favicon.ico" width="18" height="18" alt="logo" title="logo" />  [Kyat Zay](https://kyatzay.vercel.app/)
+<img src="src/assets/favicon.svg" width="18" height="18" alt="logo" title="logo" />  [Kyat Zay](https://kyatzay.vercel.app/)
 
 ## Setup
 
