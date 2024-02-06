@@ -1,0 +1,23 @@
+<section style="background-color: rgb(255, 183, 183); text-align: center">
+  <input
+    style="padding: 1rem; font-size: 1rem"
+    type="search"
+    (keyup)="onChange($event)"
+    [value]="firstName()"
+    name="firstName"
+    placeholder="First Name"
+  />
+  <button
+    [disabled]="loading"
+    (click)="saveToLocal(firstName())"
+    style="padding: 1rem; font-size: 1rem"
+  >
+    {{ loading ? "loading..." : "Save Local" }}
+  </button>
+  <div>{{ loading }}</div>
+  <div>hello</div>
+  <div>hello</div>
+  <div>hello</div>
+</section>
+<div>{{ firstName() }}</div>
+<router-outlet />

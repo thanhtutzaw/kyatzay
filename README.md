@@ -1,2 +1,17 @@
 # kyatzay
 E-commerce Platform with Angular
+
+## Demo
+
+<img src="src/favicon.ico" width="18" height="18" alt="logo" title="logo" />  [Kyat Zay](https://kyatzay.vercel.app/)
+
+## Setup
+
+To run this project, install it locally using npm:
+
+```bash
+git clone https://github.com/thanhtutzaw/kyatzay.git
+cd kyatzay
+npm install
+npm start
+```
