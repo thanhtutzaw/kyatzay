@@ -1,11 +1,18 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component ,OnInit, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
 @Component({
+  selector: 'app-hello',
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './hello.component.html',
+  styleUrl: './hello.component.scss',
 })
+
+// @Component({
+//   standalone: true,
+//   imports: [RouterOutlet],
+//   templateUrl: './hello.component.html',
+// })
 export class HelloComponent implements OnInit {
   pageTitle = 'Page';
   loading = false;
@@ -36,3 +43,4 @@ export class HelloComponent implements OnInit {
     }, 2000);
   }
 }
+

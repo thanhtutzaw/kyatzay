@@ -102,7 +102,7 @@
     align-items: center;
     --pill-accent: var(--bright-blue);
     background: color-mix(in srgb, var(--pill-accent) 5%, transparent);
-    color: var(--pill-accent);
+    color: var(--pill-accent) !important;
     padding-inline: 0.75rem;
     padding-block: 0.375rem;
     border-radius: 2.75rem;
@@ -152,13 +152,37 @@
   .social-links a:hover svg path {
     fill: var(--gray-900);
   }
+  .primary-cta {
+    color: white !important;
+  }
+  /* .social-links a img {
+    filter: grayscale(1);
+  }
+  .social-links a:hover img {
+    filter: grayscale(0);
+  } */
 
   @media screen and (max-width: 650px) {
+    .left-side {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .social-links {
+      justify-content: center;
+    }
+    .primary-cta {
+      width: 100%;
+    }
     .content {
       flex-direction: column;
       width: max-content;
     }
-
+    .pill-group {
+      align-items: unset;
+      gap: 0.5rem;
+    }
     .divider {
       height: 1px;
       width: 100%;
@@ -172,23 +196,16 @@
   <div class="content">
     <div class="left-side">
       <img src="../assets/favicon.svg" />
-      <h1>Hello - Kyat Zay</h1>
+      <h1>Hello, Kyat Zay</h1>
       <p>An e-commerce Platform</p>
     </div>
-    <!-- <div>{{ firstName() }}</div> -->
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
       <div class="pill-group">
-        @for (item of [ { title: 'Explore the Docs', link: 'https://angular.dev'
-        }, { title: 'Learn with Tutorials', link:
-        'https://angular.dev/tutorials' }, { title: 'CLI Docs', link:
-        'https://angular.dev/tools/cli' }, { title: 'Angular Language Service',
-        link: 'https://angular.dev/tools/language-service' }, { title: 'Angular
-        DevTools', link: 'https://angular.dev/tools/devtools' }, ]; track
-        item.title) {
-        <a class="pill" [href]="item.link" target="_blank" rel="noopener">
+        @for (item of items; track item.title) {
+        <button mat-button class="pill">
           <span>{{ item.title }}</span>
-          <svg
+          <!-- <svg
             xmlns="http://www.w3.org/2000/svg"
             height="14"
             viewBox="0 -960 960 960"
@@ -198,19 +215,14 @@
             <path
               d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
             />
-          </svg>
-        </a>
+          </svg> -->
+        </button>
         }
       </div>
-      <h1>{{ counter }}</h1>
-      <button class="pill" (click)="increment()">increment</button>
-      <button class="pill" (click)="decrement()">decrement</button>
-      <button class="pill" (click)="reset()">reset</button>
-      <button class="pill" (click)="incrementBy(39)">Increment by 39</button>
-      <a href="/hello">Go to Hello</a>
+      <!-- <app-counter /> -->
       <div class="social-links">
         <a
-          href="https://github.com/angular/angular"
+          href="https://github.com/thanhtutzaw"
           aria-label="Github"
           target="_blank"
           rel="noopener"
@@ -228,28 +240,10 @@
             />
           </svg>
         </a>
+
         <a
-          href="https://twitter.com/angular"
-          aria-label="Twitter"
-          target="_blank"
-          rel="noopener"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            alt="Twitter"
-          >
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-            />
-          </svg>
-        </a>
-        <a
-          href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw"
-          aria-label="Youtube"
+          href="https://www.youtube.com/@ThanHtutZaw3"
+          aria-label="Youtube Channel"
           target="_blank"
           rel="noopener"
         >
@@ -268,7 +262,24 @@
             />
           </svg>
         </a>
+        <a
+          href="https://thz.vercel.app"
+          aria-label="Github"
+          target="_blank"
+          rel="noopener"
+        >
+          <img
+            width="25"
+            height="25"
+            src="https://thz.vercel.app/thanhtutzaw-192.png"
+            class="border-red-100"
+            alt="Portfolio"
+          />
+        </a>
       </div>
+      <button mat-button class="pill primary-cta mt-5 !bg-blue-600">
+        Get Started
+      </button>
     </div>
   </div>
 </main>

@@ -1,43 +1,26 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import { Counter } from './counter/counter.component';
+import { DataService } from './data.service';
+import {MatButtonModule} from '@angular/material/button'
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Counter , MatButtonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  constructor(
+    private dataService: DataService // private cartService: CartService
+  ) // private formBuilder: FormBuilder
+  {}
+  items = this.dataService.LinkDatas;
+
   // items = this.cartService.getItems();
 
   // checkoutForm = this.formBuilder.group({
   //   name: '',
   //   address: '',
   // });
-
-  // constructor(
-  //   private cartService: CartService,
-  //   private formBuilder: FormBuilder
-  // ) {}
-  title = 'kyatzay';
-  counter = 0;
-  increment() {
-    this.counter = this.counter + 100;
-    return this.counter;
-  }
-  decrement() {
-    this.counter = this.counter - 100;
-    return this.counter;
-  }
-  incrementBy(count: number) {
-    this.counter = this.counter + count;
-  }
-  reset() {
-    const initialValue = 0;
-    if (this.counter === initialValue) return;
-    this.counter = initialValue;
-    alert('reseted');
-    return this.counter;
-  }
 }
