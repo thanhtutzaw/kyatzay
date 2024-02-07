@@ -1,0 +1,48 @@
+<main class="flex flex-col justify-center items-center min-h-full">
+  <form
+    (submit)="$event.preventDefault()"
+    class="flex flex-col gap-3 text-lg bg-gray-100 shadow-lg rounded-md p-4 max-w-[300px] w-screen mx-4"
+  >
+    <h1 class="text-center font-extrabold">Sign up</h1>
+    <label for="email"> Email </label>
+    <input
+      placeholder="Enter Email"
+      id="email"
+      class="border-gray-50 bg-gray-200 px-2 py-1 rounded-md border-solid border w-full"
+      type="email"
+      name="email"
+      required
+      minlength="3"
+    />
+    <label for="password"> Password </label>
+    <div class="relative">
+      <input
+        placeholder="Enter Password"
+        id="password"
+        class="border-gray-50 bg-gray-200 px-2 py-1 rounded-md border-solid border w-full"
+        [type]="isShow ? 'password' : 'text'"
+        name="password"
+        required
+        minlength="6"
+      />
+      <button
+        (click)="togglePasswordType()"
+        class="absolute right-0 px-2 py-1 rounded-md"
+      >
+        Show
+      </button>
+    </div>
+
+    <button
+      [disabled]="signUpLoading"
+      mat-button
+      class="!bg-blue-500 !text-white px-2 py-1 rounded-md mt-2"
+      type="submit"
+    >
+      {{ signUpLoading ? "Creating ..." : "Signup" }}
+    </button>
+  </form>
+  <a class="my-4 hover:underline" href="/login"
+    >Already have an account ? Sign in</a
+  >
+</main>

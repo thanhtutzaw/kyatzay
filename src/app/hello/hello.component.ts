@@ -10,7 +10,6 @@ import { RouterOutlet } from '@angular/router';
 
 // @Component({
 //   standalone: true,
-//   imports: [RouterOutlet],
 //   templateUrl: './hello.component.html',
 // })
 export class HelloComponent implements OnInit {
