@@ -5,10 +5,10 @@ import {
   RouterModule,
   RouterOutlet,
 } from '@angular/router';
+import { slideInAnimation } from './animation';
 import { Counter } from './counter/counter.component';
 import { DataService } from './data.service';
 import { SignupComponent } from './signup/signup.component';
-import { slideInAnimation } from './animation';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -21,7 +21,7 @@ import { slideInAnimation } from './animation';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  animations:[slideInAnimation]
+  animations: [slideInAnimation],
 })
 export class AppComponent {
   constructor(
@@ -35,9 +35,6 @@ export class AppComponent {
     ];
   }
   items = this.dataService.LinkDatas;
-
-  // items = this.cartService.getItems();
-
   // checkoutForm = this.formBuilder.group({
   //   name: '',
   //   address: '',
