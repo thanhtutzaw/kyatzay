@@ -10,6 +10,20 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.main {
-    padding-top: 60px !important;
+main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+    padding-top: 80px;
+    height: 100vh;
+}
+nav > a.active {
+    // border-bottom: 1px solid blue;
+    // text-decoration: none;
+    color: rgb(59, 130, 246);
 }

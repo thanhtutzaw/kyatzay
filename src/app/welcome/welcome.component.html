@@ -52,17 +52,6 @@
     color: var(--gray-700);
   }
 
-  main {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: inherit;
-    position: relative;
-  }
-
   .angular-logo {
     max-width: 9.2rem;
   }
@@ -191,8 +180,7 @@
     }
   }
 </style>
-
-<main class="main">
+<main class="flex flex-col justify-center items-center min-h-full">
   <div class="content">
     <div class="left-side">
       <img src="../assets/favicon.svg" />
@@ -277,7 +265,12 @@
           />
         </a>
       </div>
-      <button mat-button class="pill primary-cta mt-5 !bg-blue-600">
+      <button
+        routerLink="/login"
+        routerLinkActive="active"
+        mat-button
+        class="pill primary-cta mt-5 !bg-blue-600"
+      >
         Get Started
       </button>
     </div>

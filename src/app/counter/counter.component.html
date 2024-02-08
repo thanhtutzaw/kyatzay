@@ -52,17 +52,6 @@
     color: var(--gray-700);
   }
 
-  main {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: inherit;
-    position: relative;
-  }
-
   .angular-logo {
     max-width: 9.2rem;
   }
@@ -167,10 +156,11 @@
     }
   }
 </style>
-
+<main class="flex flex-col justify-center items-center min-h-full">
 <h1>{{ counter }}</h1>
 <button class="pill" (click)="increment()">increment</button>
 <button class="pill" (click)="decrement()">decrement</button>
 <button class="pill" (click)="reset()">reset</button>
 <button class="pill" (click)="incrementBy(39)">Increment by 39</button>
 <a href="/hello">Go to Hello</a>
+</main>

@@ -12,7 +12,8 @@ export class SignupComponent {
   isShow = false;
   signUpLoading = false;
   constructor(private router: Router) {}
-  togglePasswordType() {
+  togglePasswordType(event:Event) {
+    event.preventDefault();
     this.isShow = !this.isShow;
   }
   onSubmit(event: Event) {

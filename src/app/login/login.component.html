@@ -1,13 +1,13 @@
 <main class="flex flex-col justify-center items-center min-h-full">
   <form
-    class="flex flex-col gap-3 text-lg bg-gray-100 shadow-lg rounded-md p-4 max-w-[300px] w-screen mx-4"
+    class="flex flex-col gap-3 text-lg bg-gray-100 shadow-lg rounded-md p-4 max-w-[317px] w-screen mx-4"
     (submit)="onSubmit($event)"
   >
     <h1 class="text-center font-extrabold">Login</h1>
     <label for="email"> Email </label>
     <input
       id="email"
-      class="border-gray-50 bg-gray-200 px-2 py-1 rounded-md border-solid border w-full"
+      class="border-gray-50 bg-gray-200 px-3 py-3 rounded-md border-solid border w-full"
       type="email"
       name="email"
       required
@@ -15,24 +15,21 @@
       minlength="3"
     />
     <label for="password"> Password</label>
-    <div class="relative">
+    <div class="relative border-gray-50 bg-gray-200 px-3 py-3 rounded-md">
       <input
+        autocomplete="off"
+        placeholder="Enter Password"
         id="password"
-        class="border-gray-50 bg-gray-200 px-2 py-1 rounded-md border-solid border w-full"
+        class="border-gray-50 focus:outline-none bg-gray-200 mr-1"
         [type]="isShow ? 'password' : 'text'"
         name="password"
         required
         minlength="6"
-        value="111111"
       />
-      <button
-        (click)="togglePasswordType($event)"
-        class="absolute right-0 px-2 py-1 rounded-md"
-      >
-        Show
+      <button (click)="togglePasswordType($event)" class="h-full select-none">
+        {{ isShow ? "Hide" : "Show" }}
       </button>
     </div>
-
     <button
       [disabled]="signInLoading"
       mat-button
