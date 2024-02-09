@@ -2,6 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html {
+    scrollbar-gutter: stable;
+}
 html,
 body {
     height: 100%;
@@ -21,7 +24,8 @@ main {
     position: relative;
     // padding-top: 80px;
     height: 100dvh;
-    padding-top: 150px;
+    // padding-top: 150px;
+    margin-top: 60px;
 }
 nav > a.active {
     // border-bottom: 1px solid blue;

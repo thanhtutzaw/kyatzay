@@ -1,5 +1,4 @@
-<div [@routeAnimations]="getRouteAnimationData()">
-  <nav
+<nav
     class="flex justify-around gap-2 p-4 mx-auto text-xl fixed top-0 shadow-md z-10 bg-zinc-100 w-full"
   >
     <a class="hover:underline" routerLink="">
@@ -15,5 +14,7 @@
       >Signup</a
     >
   </nav>
+<div [@routeAnimations]="getRouteAnimationData()">
+  
   <router-outlet />
 </div>
