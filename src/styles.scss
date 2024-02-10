@@ -23,12 +23,41 @@ main {
     box-sizing: inherit;
     position: relative;
     // padding-top: 80px;
-    height: 100dvh;
     // padding-top: 150px;
-    margin-top: 60px;
+
+    // height: 100dvh;
+    // margin-top: 60px;
+
+    min-height: 100dvh;
+    padding-top: 100px;
 }
-nav > a.active {
-    // border-bottom: 1px solid blue;
-    // text-decoration: none;
-    color: rgb(59, 130, 246);
+nav > a {
+    text-decoration: none;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    &:active {
+        opacity: 0.8;
+    }
+    &:hover:not(.logo) {
+        background-color: rgb(255 169 48 / 0.1);
+        color: #ffa930;
+    }
+}
+nav {
+    a.active {
+        color: #ffa930;
+        &:hover {
+            background-color: rgb(255 169 48 / 0.1);
+            color: #ffa930;
+        }
+        &:active {
+            opacity: 0.5;
+        }
+        background-color: rgb(255 169 48 / 0.1);
+        color: #ffa930;
+        // &:hover {
+        //     background-color: #ffa930;
+        //     color: white;
+        // }
+    }
 }

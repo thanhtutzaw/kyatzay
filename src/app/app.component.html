@@ -1,20 +1,13 @@
 <nav
-    class="flex justify-around gap-2 p-4 mx-auto text-xl fixed top-0 shadow-md z-10 bg-zinc-100 w-full"
-  >
-    <a class="hover:underline" routerLink="">
-      <img src="../assets/favicon.svg" width="30" height="30"
-    /></a>
-    <a class="hover:underline" routerLink="/welcome" routerLinkActive="active"
-      >Welcome</a
-    >
-    <a class="hover:underline" routerLink="/login" routerLinkActive="active"
-      >Login</a
-    >
-    <a class="hover:underline" routerLink="/signup" routerLinkActive="active"
-      >Signup</a
-    >
-  </nav>
+  class="flex justify-around gap-2 p-4 mx-auto text-xl fixed top-0 shadow-md z-10 bg-zinc-100 w-full"
+>
+  <a routerLink="" class="logo">
+    <img src="../assets/favicon.svg" width="30" height="30"
+  /></a>
+  <a routerLink="/welcome" routerLinkActive="active">Welcome</a>
+  <a routerLink="/login" routerLinkActive="active">Login</a>
+  <a routerLink="/signup" routerLinkActive="active">Signup</a>
+</nav>
 <div [@routeAnimations]="getRouteAnimationData()">
-  
   <router-outlet />
 </div>
