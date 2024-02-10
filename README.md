@@ -1,5 +1,5 @@
-# kyatzay
-E-commerce Platform with Angular
+# Kyatzay
+E-commerce Platform with Angular ( Project is under development Process )
 
 ## Demo
 
