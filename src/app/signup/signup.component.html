@@ -1,7 +1,7 @@
 <main class="flex flex-col justify-center items-center">
   <form
     (submit)="onSubmit($event)"
-    class="flex flex-col gap-3 text-lg bg-gray-100 shadow-lg border border-solid border-gray-150 rounded-lg p-4"
+    class="flex flex-col gap-3 text-lg bg-gray-100 shadow-lg border border-solid border-gray-150 rounded-lg p-4 min-w-[320px]"
   >
     <!-- max-w-[317px] w-screen -->
     <h1 class="text-center font-extrabold">Sign up</h1>
@@ -16,12 +16,14 @@
       minlength="3"
     />
     <label for="password"> Password </label>
-    <div class="relative border-gray-50 bg-gray-200 px-3 py-3 rounded-md flex">
+    <div
+      class="passwordContainer relative border-gray-50 bg-gray-200 px-3 py-3 rounded-md flex"
+    >
       <input
         autocomplete="off"
         placeholder="Enter Password"
         id="password"
-        class="border-gray-50 focus:outline-none bg-gray-200 mr-1"
+        class="border-gray-50 focus:outline-none bg-gray-200 mr-1 flex-1"
         [type]="!isShow ? 'password' : 'text'"
         name="password"
         required
