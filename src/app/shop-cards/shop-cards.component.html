@@ -4,35 +4,41 @@
     class="bg-gray-100 justify-between shadow-lg flex min-w-[300px] h-[200px] p-4 flex-[1_0_300px] rounded-md"
   >
     <h1>{{ item.title }}</h1>
-    <button
-      class="!shadow-sm"
-      [class]="item.favorite ? '!bg-[#ff000014]' : '!bg-[#ff000071]'"
-      mat-mini-fab
-      type="button"
-      [color]="item.favorite ? 'transparent' : 'warn'"
-      (click)="
-        toggleFavourite(item.title);
-        updateFavourite({ id: item.title, createdAt: 'd', title: item.title })
-      "
-    >
-      <mat-icon [color]="item.favorite ? 'warn' : 'red'">favorite</mat-icon>
-    </button>
-    <button
-      class="!shadow-sm"
-      mat-mini-fab
-      color="warn"
-      type="button"
-      (click)="deleteShopItem(item.title)"
-    >
-      <mat-icon>delete</mat-icon>
-    </button>
+    <div class="flex flex-wrap gap-1">
+      <button
+        class="!shadow-sm"
+        mat-mini-fab
+        type="button"
+        [color]="item.favorite ? 'transparent' : 'warn'"
+        (click)="
+          toggleFavourite(item.title);
+          updateFavourite({ id: item.title, createdAt: 'd', title: item.title })
+        "
+      >
+        <mat-icon [color]="item.favorite ? 'warn' : 'red'">favorite</mat-icon>
+      </button>
+      <button
+        class="!shadow-sm"
+        mat-mini-fab
+        color="warn"
+        type="button"
+        (click)="deleteShopItem(item.title)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
     <button
       class="!shadow-sm"
       mat-button
       color="primary"
       type="button"
       (click)="
-        updateCart({ id: item.title, createdAt: 'd', title: item.title , price:item.price })
+        updateCart({
+          id: item.title,
+          createdAt: 'd',
+          title: item.title,
+          price: item.price
+        })
       "
     >
       Add to Cart
