@@ -1,6 +1,10 @@
 <main class="flex flex-col items-center !justify-normal">
   <nav class="fixed mx-auto top-[78px] flex justify-end"></nav>
-  <h1>Home</h1>
+  <h2 *ngIf="dataService.total$.value > 0">
+    Total $ {{ dataService.total$.value }}
+  </h2>
+  <h2>Favorite {{ dataService.myFavorite$.value.length }}</h2>
   {{ authService.currentUser$.value?.email }}
   <app-shop-cards></app-shop-cards>
+ 
 </main>

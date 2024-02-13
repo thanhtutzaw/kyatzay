@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { ShopCardsComponent } from '../shop-cards/shop-cards.component';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { ShopCardsComponent } from '../shop-cards/shop-cards.component';
 export class HomeComponent {
   constructor() {}
   authService = inject(AuthService);
+  dataService = inject(DataService);
   // currentUser$ = this.authService.currentUser$.value;
 
   // checkoutForm = this.formBuilder.group({

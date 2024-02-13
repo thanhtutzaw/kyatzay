@@ -24,17 +24,19 @@
     mat-mini-fab
     color="transparent"
   >
-    <mat-icon matBadge="3" matBadgeColor="warn">shopping_cart</mat-icon>
-  </button>
-   <button
-      *ngIf="authService.currentUser$.value"
-      mat-button
-      class="!bg-red-100 !text-red-500 px-2 py-1 rounded-md mt-2"
-      type="submit"
-      (click)="authService.logout()"
+    <mat-icon [matBadge]="dataService.carts$.value.length" matBadgeColor="warn"
+      >shopping_cart</mat-icon
     >
-      Logout
-    </button>
+  </button>
+  <button
+    *ngIf="authService.currentUser$.value"
+    mat-button
+    class="!bg-red-100 !text-red-500 px-2 py-1 rounded-lg mt-2"
+    type="submit"
+    (click)="authService.logout()"
+  >
+    Logout
+  </button>
 </nav>
 <div [@routeAnimations]="getRouteAnimationData()">
   <router-outlet />

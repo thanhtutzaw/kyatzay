@@ -12,6 +12,7 @@ import { slideInAnimation } from './animation';
 import { AuthService } from './auth.service';
 import { Counter } from './counter/counter.component';
 import { SignupComponent } from './signup/signup.component';
+import { DataService } from './data.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
     private contexts: ChildrenOutletContexts // private authService: AuthService
   ) {}
   authService = inject(AuthService);
+  dataService = inject(DataService)
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[
       'animation'
