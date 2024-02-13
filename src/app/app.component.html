@@ -1,12 +1,40 @@
 <nav
-  class="flex justify-around gap-2 p-4 mx-auto text-xl fixed top-0 shadow-md z-10 bg-zinc-100 w-full"
+  class="flex justify-around items-center gap-2 p-4 mx-auto text-xl fixed top-0 shadow-md z-10 bg-zinc-100 w-full"
 >
   <a routerLink="" class="logo">
     <img src="../assets/favicon.svg" width="30" height="30"
   /></a>
+
   <a routerLink="/welcome" routerLinkActive="active">Welcome</a>
-  <a routerLink="/login" routerLinkActive="active">Login</a>
-  <a routerLink="/signup" routerLinkActive="active">Signup</a>
+  <a
+    *ngIf="!authService.currentUser$.value"
+    routerLink="/login"
+    routerLinkActive="active"
+    >Login</a
+  >
+  <a
+    *ngIf="!authService.currentUser$.value"
+    routerLink="/signup"
+    routerLinkActive="active"
+    >Signup</a
+  >
+  <button
+    *ngIf="authService.currentUser$.value"
+    class="!shadow-sm"
+    mat-mini-fab
+    color="transparent"
+  >
+    <mat-icon matBadge="3" matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
+   <button
+      *ngIf="authService.currentUser$.value"
+      mat-button
+      class="!bg-red-100 !text-red-500 px-2 py-1 rounded-md mt-2"
+      type="submit"
+      (click)="authService.logout()"
+    >
+      Logout
+    </button>
 </nav>
 <div [@routeAnimations]="getRouteAnimationData()">
   <router-outlet />

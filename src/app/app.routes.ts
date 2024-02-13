@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './auth.guard';
 import { HelloComponent } from './hello/hello.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -8,7 +9,14 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 export const routes: Routes = [
   // { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-  { path: '', component: HomeComponent, data: { animation: 'HomePage' } },
+  {
+    path: '',
+    component: HomeComponent,
+    data: {
+      animation: 'HomePage',
+    },
+    canActivate: [authGuard],
+  },
   {
     path: 'welcome',
     component: WelcomeComponent,
@@ -19,7 +27,10 @@ export const routes: Routes = [
     component: LoginComponent,
     data: { animation: 'LoginPage' },
   },
-  { path: 'signup', component: SignupComponent },
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
   { title: 'hello', path: 'hello', component: HelloComponent },
   { path: '**', title: 'Not Found', component: NotFoundPageComponent },
 ];

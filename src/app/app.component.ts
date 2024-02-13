@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import {
   ChildrenOutletContexts,
   RouterModule,
   RouterOutlet,
 } from '@angular/router';
 import { slideInAnimation } from './animation';
+import { AuthService } from './auth.service';
 import { Counter } from './counter/counter.component';
-import { DataService } from './data.service';
 import { SignupComponent } from './signup/signup.component';
 @Component({
   selector: 'app-root',
@@ -16,27 +19,28 @@ import { SignupComponent } from './signup/signup.component';
     RouterOutlet,
     Counter,
     MatButtonModule,
+    MatIconModule,
+    MatBadgeModule,
     SignupComponent,
     RouterModule,
+    NgIf,
   ],
+  // providers: [AuthService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations: [slideInAnimation],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(
-    private contexts: ChildrenOutletContexts,
-    private dataService: DataService // private cartService: CartService // private formBuilder: FormBuilder
+    private contexts: ChildrenOutletContexts // private authService: AuthService
   ) {}
-
+  authService = inject(AuthService);
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[
       'animation'
     ];
   }
-  items = this.dataService.LinkDatas;
-  // checkoutForm = this.formBuilder.group({
-  //   name: '',
-  //   address: '',
-  // });
+  ngOnInit(): void {
+    this.authService.setCurrentUser();
+  }
 }

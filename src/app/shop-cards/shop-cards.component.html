@@ -1,0 +1,19 @@
+<div class="flex flex-wrap gap-4 items-center">
+  @for (item of shopItems$.value; track item.title) {
+  <div
+    class="bg-gray-100 justify-between shadow-lg flex min-w-[300px] h-[200px] p-4 flex-[1_0_300px] rounded-md"
+  >
+    <h1>{{ item.title }}</h1>
+    <button
+      class="!shadow-sm"
+      mat-mini-fab
+      color="warn"
+      type="button"
+      (click)="deleteShopItem(item.title)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+  }
+</div>

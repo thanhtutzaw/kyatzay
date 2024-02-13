@@ -3,7 +3,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DataService {
-  LinkDatas = [
+  techStacks = [
+    { title: 'Shopping Cart' },
+    // { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
+    // { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
+    // {
+    //   title: 'Angular Language Service',
+    //   link: 'https://angular.dev/tools/language-service',
+    // },
+    {
+      title: 'Payment with Stripe',
+    },
+    {
+      title: 'Angular',
+    },
+    {
+      title: 'Material',
+    },
+  ];
+  shopItems = [
     { title: 'Shopping Cart' },
     // { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
     // { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },

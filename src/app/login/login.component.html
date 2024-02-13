@@ -1,11 +1,13 @@
 <main class="flex flex-col justify-center items-center">
   <form
+    [formGroup]="loginForm"
     class="flex flex-col gap-3 text-lg bg-gray-100 shadow-lg border border-solid border-gray-150 rounded-md p-4 min-w-[320px]"
     (submit)="onSubmit($event)"
   >
     <h1 class="text-center font-extrabold">Login</h1>
     <label for="email"> Email </label>
     <input
+      formControlName="email"
       id="email"
       class="border-gray-50 bg-gray-200 px-3 py-3 rounded-md border-solid border w-full"
       type="email"
@@ -19,6 +21,7 @@
       class="passwordContainer relative border-gray-50 bg-gray-200 px-3 py-3 rounded-md flex"
     >
       <input
+        formControlName="password"
         autocomplete="off"
         placeholder="Enter Password"
         id="password"
@@ -27,8 +30,13 @@
         name="password"
         required
         minlength="6"
+        value="111111"
       />
-      <button (click)="togglePasswordType($event)" class="h-full select-none">
+      <button
+        type="button"
+        (click)="togglePasswordType($event)"
+        class="h-full select-none"
+      >
         {{ isShow ? "Hide" : "Show" }}
       </button>
     </div>

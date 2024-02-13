@@ -1,4 +1,6 @@
-
-<main class="flex flex-col justify-center items-center">
-<h1>Home</h1>
+<main class="flex flex-col items-center !justify-normal">
+  <nav class="fixed mx-auto top-[78px] flex justify-end"></nav>
+  <h1>Home</h1>
+  {{ authService.currentUser$.value?.email }}
+  <app-shop-cards></app-shop-cards>
 </main>
