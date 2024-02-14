@@ -41,7 +41,7 @@
         })
       "
     >
-      Add to Cart
+      {{ isCartExist(item.title) ? "Remove Cart" : "Add to Cart" }}
     </button>
   </div>
 

@@ -12,7 +12,9 @@ import { DataService } from '../data.service';
 })
 export class ShopCardsComponent implements OnInit {
   dataService = inject(DataService);
-  shopItems$ = new BehaviorSubject<{ title: string; favorite: boolean , price:number }[]>([]);
+  shopItems$ = new BehaviorSubject<
+    { title: string; favorite: boolean; price: number }[]
+  >([]);
   ngOnInit(): void {
     this.shopItems$.next(this.dataService.shopItems);
   }
@@ -29,18 +31,19 @@ export class ShopCardsComponent implements OnInit {
       newData,
     ]);
   }
-  updateCart(newData: { id: string; title: string; createdAt: any , price:number }) {
-    const isFound = this.dataService.carts$.value.find(
-      (fav) => fav.title === newData.id
-    );
-    if (isFound) {
+  isCartExist = (id: string) =>
+    this.dataService.carts$.value.find((fav) => fav.title === id);
+  updateCart(newData: {
+    id: string;
+    title: string;
+    createdAt: any;
+    price: number;
+  }) {
+    if (this.isCartExist(newData.id)) {
       this.deleteCart(newData.title);
       return;
     }
-    this.dataService.carts$.next([
-      ...this.dataService.carts$.value,
-      newData,
-    ]);
+    this.dataService.carts$.next([...this.dataService.carts$.value, newData]);
   }
   toggleFavourite(id: string) {
     console.log('Updated Favorite');
