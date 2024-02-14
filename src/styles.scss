@@ -46,6 +46,7 @@ nav > a {
     }
 }
 nav {
+    width:calc(100vw - 17px) !important;
     a.active {
         color: #ffa930;
         &:hover {
