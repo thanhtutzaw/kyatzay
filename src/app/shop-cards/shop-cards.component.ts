@@ -13,7 +13,7 @@ import { DataService } from '../data.service';
 export class ShopCardsComponent implements OnInit {
   dataService = inject(DataService);
   shopItems$ = new BehaviorSubject<
-    { title: string; favorite: boolean; price: number }[]
+    { title: string; favorite: boolean; price: number; currency?: string }[]
   >([]);
   ngOnInit(): void {
     this.shopItems$.next(this.dataService.shopItems);
@@ -31,6 +31,11 @@ export class ShopCardsComponent implements OnInit {
       newData,
     ]);
   }
+  getCurrentItem = (id: string) => {
+    const data = this.dataService.carts$.value.find((fav) => fav.title === id);
+    console.log(data);
+    return data;
+  };
   isCartExist = (id: string) =>
     this.dataService.carts$.value.find((fav) => fav.title === id);
   updateCart(newData: {
@@ -38,12 +43,58 @@ export class ShopCardsComponent implements OnInit {
     title: string;
     createdAt: any;
     price: number;
+    currency?: string;
   }) {
-    if (this.isCartExist(newData.id)) {
-      this.deleteCart(newData.title);
-      return;
+    const d = this.dataService.carts$.value.find(
+      (c) => c.title === newData.title
+    );
+    if (this.isCartExist(newData.title)) {
+      if ((d?.itemCount ?? 0) <= 1) {
+        this.deleteCart(newData.title);
+      } else {
+        // this.dataService.carts$.next([
+        //   ...this.dataService.carts$.value,
+        //   { ...newData, itemCount: (d?.itemCount ?? 0) - 1 },
+        // ]);
+      }
+      // return;
     }
-    this.dataService.carts$.next([...this.dataService.carts$.value, newData]);
+
+    this.dataService.carts$.next([
+      ...this.dataService.carts$.value,
+      { ...newData, itemCount: (d?.itemCount ?? 0) + 1 },
+    ]);
+  }
+  decreaseCart(newData: {
+    id: string;
+    title: string;
+    createdAt: any;
+    price: number;
+    currency?: string;
+  }) {
+    const d = this.dataService.carts$.value.find(
+      (c) => c.title === newData.title
+    );
+    if (this.isCartExist(newData.title)) {
+      if ((d?.itemCount ?? 0) <= 1) {
+        this.deleteCart(newData.title);
+      } else {
+        // this.dataService.carts$.next([
+        //   ...this.dataService.carts$.value,
+        //   { ...newData, itemCount: (d?.itemCount ?? 0) - 1 },
+        // ]);
+      }
+      // return;
+    }
+
+    this.dataService.carts$.next([
+      ...this.dataService.carts$.value.map((c) => {
+        if (c.title === newData.title) {
+          return { ...c, itemCount: (c?.itemCount ?? 0) - 1 };
+        }
+        return c;
+      }),
+    ]);
   }
   toggleFavourite(id: string) {
     console.log('Updated Favorite');
@@ -66,10 +117,10 @@ export class ShopCardsComponent implements OnInit {
     this.dataService.myFavorite$.next(filter);
   }
   deleteCart(id: string) {
-    const filter = this.dataService.carts$.value.filter(
+    const filterCart = this.dataService.carts$.value.filter(
       (fav) => fav.title !== id
     );
-    this.dataService.carts$.next(filter);
+    this.dataService.carts$.next(filterCart);
   }
   deleteShopItem(id: string) {
     console.log('Deleted');

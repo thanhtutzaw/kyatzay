@@ -1,9 +1,11 @@
 <div class="flex flex-wrap gap-4 items-center">
   @for (item of shopItems$.value; track item.title) {
   <div
-    class="bg-gray-200 flex-col items-center justify-center shadow-lg flex min-w-[300px] h-[200px] p-4 flex-[1_0_300px] rounded-md"
+  style="background-color: linear-gradient(214deg, #9e9e9e52, transparent);"
+    class="bg-gray-200 gap-2 flex-col items-center justify-center shadow-lg flex min-w-[300px] min-h-[200px] p-4 flex-[1_0_300px] rounded-md"
   >
     <h1>{{ item.title }}</h1>
+    <h3>{{ item.currency ?? "$" }} {{ item.price }}</h3>
     <div class="flex flex-wrap gap-1">
       <button
         class="!shadow-sm"
@@ -37,11 +39,29 @@
           id: item.title,
           createdAt: 'd',
           title: item.title,
-          price: item.price
+          price: item.price ,
         })
       "
     >
-      {{ isCartExist(item.title) ? "Remove Cart" : "Add to Cart" }}
+      <!-- {{ isCartExist(item.title) ? "Remove Cart" : "Add to Cart" }} -->
+      + Add to Cart
+    </button>
+    <button
+      [disabled]="(getCurrentItem(item.title)?.itemCount ?? 0) === 0"
+      class="!shadow-sm"
+      mat-button
+      color="primary"
+      type="button"
+      (click)="
+        decreaseCart({
+          id: item.title,
+          createdAt: 'd',
+          title: item.title,
+          price: item.price ,
+        })
+      "
+    >
+      - Remove Cart
     </button>
   </div>
 
